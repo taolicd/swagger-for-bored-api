@@ -4,22 +4,22 @@ info:
   description: >-
     This is a Swagger page for the Bored API. Find out more about the
     project at [https://www.boredapi.com](https://www.boredapi.com).  No
-    authentication is required for this API.
+    authentication is required for using this API.
   version: 1.0.0
 servers:
-  - url: https://www.boredapi.com/api
+  - url: https://www.boredapi.com
 paths:
-  /activity:
+  /api/activity:
     get:
       tags:
         - What to do when you are bored? Use this API to find activities to entertain you. 
-      summary: Use this API to find things to do when you are bored.
-      description:  You can specify any combination of the paramters below. If no parameters are specified, a random activity will be returned.
+      summary: Use this API to find things to do when you are bored. 
+      description:  You can specify any combinations of the parameters below. If no parameters are specified, a random activity will be returned.You will get a Json response containing the activity description, type of activity, a unique key for the activity, the price indicator from 0-1, accessibility indicator from 0-1, the number of participants suggested.
       operationId: getInventory
       parameters:
         - name: type
           in: query
-          description: Optional. Accepts an activity type from the dropdown list. 
+          description: Optional. Accepts an activity type from the drop-down list. 
           required: false
           schema:
             type: string
@@ -33,12 +33,7 @@ paths:
               - relaxation
               - music
               - busywork
-        - name: key
-          in: query
-          description: Optional. Accepts an integer from 1000000 to 9999999.Do not include thousand seperator in your integer. 
-          required: false
-          schema:
-            type: integer
+       
         - name: participants
           in: query
           description: Optional. The number of people that this activity involves from 1 to 10.
@@ -83,6 +78,13 @@ paths:
           required: false
           schema:
             type: number
+            
+        - name: key
+          in: query
+          description: Optional. Accepts an integer from 1000000 to 9999999 to represent the unique ID of an activity. Do not include thousand seperator in your integer. 
+          required: false
+          schema:
+            type: integer
           
       responses:
         '200':
@@ -91,5 +93,3 @@ paths:
             application/json:
               schema:
                 type: object
-components: {}
-
