@@ -1,8 +1,8 @@
 openapi: 3.0.1
 info:
-  title: Swagger Bored API
+  title: Swagger UI for the Bored API
   description: >-
-    This is a Swagger page for the Bored API. You can find out more about the
+    This is a Swagger page for the Bored API. Find out more about the
     project at [https://www.boredapi.com](https://www.boredapi.com).  No
     authentication is required for this API.
   version: 1.0.0
@@ -12,14 +12,15 @@ paths:
   /activity:
     get:
       tags:
-        - Bored
-      summary: Returns pet inventories by status
-      description: Returns a map of status codes to quantities
+        - What to do when you are bored? Use this API to find activities to entertain you. 
+      summary: Use this API to find things to do when you are bored.
+      description:  You can specify any combination of the paramters below. If no parameters are specified, a random activity will be returned.
       operationId: getInventory
       parameters:
         - name: type
           in: query
-          description: Optional parameter for recreation type.
+          description: Optional. Accepts an activity type from the dropdown list. 
+          required: false
           schema:
             type: string
             enum:
@@ -34,24 +35,55 @@ paths:
               - busywork
         - name: key
           in: query
-          description: Optional parameter for recreation type.
+          description: Optional. Accepts an integer from 1000000 to 9999999.Do not include thousand seperator in your integer. 
+          required: false
           schema:
             type: integer
         - name: participants
           in: query
-          description: Optional parameter for participants number.
+          description: Optional. The number of people that this activity involves from 1 to 10.
           schema:
             type: integer
         - name: price
           in: query
-          description: Optional parameter for a link.
+          description: Optional. accepts a number from 0 to 1. The return will match the exact price specified. 
+          required: false
           schema:
-            type: integer
-        - name: link
+            type: number
+        - name: minprice
           in: query
-          description: Optional parameter for the price.
+          description: Optional. The mimimum price to start with. 
+          required: false
           schema:
-            type: string
+            type: number
+        - name: maxprice
+          in: query
+          description: Optional. The maxinum price. 
+          required: false
+          schema:
+            type: number
+            
+        - name: accessibility
+          in: query
+          description: Optional. A factor from [0,1] describing how possible an event is to do with zero being the most accessible. 
+          required: false
+          schema:
+            type: number
+        
+        - name: minaccessibility. 
+          in: query
+          description:  miminum accessibility from [0,1]
+          required: false
+          schema:
+            type: number
+            
+        - name: maxaccessibility. 
+          in: query
+          description: Optional. A factor describing how possible an event is to do with zero being the most accessible
+          required: false
+          schema:
+            type: number
+          
       responses:
         '200':
           description: successful operation
@@ -60,3 +92,4 @@ paths:
               schema:
                 type: object
 components: {}
+
