@@ -32,7 +32,17 @@ paths:
       operationId: "getInventory"
       produces:
       - "application/json"
-      parameters: []
+      parameters:
+            - in: query
+              name: key
+              type: integer
+              description: The numbers of .
+              required: no
+            - in: query
+              name: type
+              type: string
+              description: .
+              required: no
       responses:
         200:
           description: "successful operation"
