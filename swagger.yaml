@@ -1,175 +1,62 @@
-swagger: "2.0"
+openapi: 3.0.1
 info:
-  description: "This is a Swagger page for the Bored API. You can find out more about the project at [https://www.boredapi.com](https://www.boredapi.com).  No authentication is required for this API."
-  version: "1.0.0"
-  title: "Swagger Bored API"
-  
-host: "www.boredapi.com"
-basePath: "/api"
-tags:
-- name: "pet"
-  description: "Everything about your Pets"
-  externalDocs:
-    description: "Find out more"
-    url: "https://www.boredapi.com"
-- name: "store"
-  description: "Access to Petstore orders"
-- name: "user"
-  description: "Operations about user"
-  externalDocs:
-    description: "Find out more about our store"
-    url: "https://www.boredapi.com"
-schemes:
-- "https"
+  title: Swagger Bored API
+  description: >-
+    This is a Swagger page for the Bored API. You can find out more about the
+    project at [https://www.boredapi.com](https://www.boredapi.com).  No
+    authentication is required for this API.
+  version: 1.0.0
+servers:
+  - url: https://www.boredapi.com/api
 paths:
-  
   /activity:
     get:
       tags:
-      - "store"
-      summary: "Returns pet inventories by status"
-      description: "Returns a map of status codes to quantities"
-      operationId: "getInventory"
-      produces:
-      - "application/json"
+        - Bored
+      summary: Returns pet inventories by status
+      description: Returns a map of status codes to quantities
+      operationId: getInventory
       parameters:
-            - in: query
-              name: key
-              type: integer
-              description: The numbers of .
-              required: no
-            - in: query
-              name: type
-              type: string
-              description: .
-              required: no
-      responses:
-        200:
-          description: "successful operation"
+        - name: type
+          in: query
+          description: Optional parameter for recreation type.
           schema:
-            type: "object"
-            additionalProperties:
-              type: "integer"
-              format: "int32"
-  
-    
-  
-definitions:
-  Order:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      petId:
-        type: "integer"
-        format: "int64"
-      quantity:
-        type: "integer"
-        format: "int32"
-      shipDate:
-        type: "string"
-        format: "date-time"
-      status:
-        type: "string"
-        description: "Order Status"
-        enum:
-        - "placed"
-        - "approved"
-        - "delivered"
-      complete:
-        type: "boolean"
-        default: false
-    xml:
-      name: "Order"
-  Category:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      name:
-        type: "string"
-    xml:
-      name: "Category"
-  User:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      username:
-        type: "string"
-      firstName:
-        type: "string"
-      lastName:
-        type: "string"
-      email:
-        type: "string"
-      password:
-        type: "string"
-      phone:
-        type: "string"
-      userStatus:
-        type: "integer"
-        format: "int32"
-        description: "User Status"
-    xml:
-      name: "User"
-  Tag:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      name:
-        type: "string"
-    xml:
-      name: "Tag"
-  Pet:
-    type: "object"
-    required:
-    - "name"
-    - "photoUrls"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      category:
-        $ref: "#/definitions/Category"
-      name:
-        type: "string"
-        example: "doggie"
-      photoUrls:
-        type: "array"
-        xml:
-          name: "photoUrl"
-          wrapped: true
-        items:
-          type: "string"
-      tags:
-        type: "array"
-        xml:
-          name: "tag"
-          wrapped: true
-        items:
-          $ref: "#/definitions/Tag"
-      status:
-        type: "string"
-        description: "pet status in the store"
-        enum:
-        - "available"
-        - "pending"
-        - "sold"
-    xml:
-      name: "Pet"
-  ApiResponse:
-    type: "object"
-    properties:
-      code:
-        type: "integer"
-        format: "int32"
-      type:
-        type: "string"
-      message:
-        type: "string"
+            type: string
+            enum:
+              - education
+              - recreational
+              - social
+              - diy
+              - charity
+              - cooking
+              - relaxation
+              - music
+              - busywork
+        - name: key
+          in: query
+          description: Optional parameter for recreation type.
+          schema:
+            type: integer
+        - name: participants
+          in: query
+          description: Optional parameter for participants number.
+          schema:
+            type: integer
+        - name: price
+          in: query
+          description: Optional parameter for a link.
+          schema:
+            type: integer
+        - name: link
+          in: query
+          description: Optional parameter for the price.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+components: {}
