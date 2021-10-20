@@ -5,22 +5,16 @@ info:
     \ Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).\
     \  For this sample, you can use the api key `special-key` to test the authorization\
     \ filters."
-  version: "1.0.5"
-  title: "Swagger Petstore"
-  termsOfService: "http://swagger.io/terms/"
-  contact:
-    email: "apiteam@swagger.io"
-  license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "petstore.swagger.io"
+  version: "1.0.0"
+ 
+host: "www.boredapi.com/"
 basePath: "/v2"
 tags:
 - name: "pet"
   description: "Everything about your Pets"
   externalDocs:
     description: "Find out more"
-    url: "http://swagger.io"
+    url: "https://www.boredapi.com/"
 - name: "store"
   description: "Access to Petstore orders"
 - name: "user"
@@ -126,16 +120,15 @@ paths:
       - petstore_auth:
         - "write:pets"
         - "read:pets"
-  /pet/findByStatus:
+  /api/activity:
     get:
       tags:
       - "pet"
-      summary: "Finds Pets by status"
-      description: "Multiple status values can be provided with comma separated strings"
-      operationId: "findPetsByStatus"
+      summary: "Get a random activity"
+      description: "Returns a random activity"
+      operationId: "findrandomActivity"
       produces:
       - "application/json"
-      - "application/xml"
       parameters:
       - name: "status"
         in: "query"
