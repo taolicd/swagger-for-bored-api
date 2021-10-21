@@ -4,7 +4,7 @@ info:
   description: >-
     Find out more about the
     project at [https://www.boredapi.com](https://www.boredapi.com).  <br/><br/> **NOTE** The Bored API requires no authentication to use. 
-    <br/> <br/> To interact with this Swagger UI, click the **GET** button to expand the panel to view the available parameters. Click **Try it out** to start plugging in parameters. Click **Excute** to run the query. <br/><br/> **TIP** After a query is submitted, The Responses section will display the equivalent **Curl** command and Request URL. 
+    <br/> <br/> To interact with this Swagger UI, click the **GET** button to expand the panel to view the available parameters. Click **Try it out** to start plugging in parameters. Click **Execute** to run the query. <br/><br/> **TIP** After a query is submitted, The Responses section will display the equivalent **Curl** command and Request URL. 
   version: 1.0.0
 servers:
   - url: https://www.boredapi.com
@@ -94,7 +94,7 @@ paths:
             maximum: 1
         - name: key
           in: query
-          description: Optional. Accepts an integer from 1000000 to 9999999 to represent the unique ID of an activity. The activity with the matching ID will be returned. <br/> <br/> **TIP**  Do not include thousand seperators in your input. 
+          description: Optional. Accepts an integer from 1000000 to 9999999 to represent the unique ID of an activity. The activity with the matching ID will be returned. <br/> <br/> **TIP**  Do not include thousand separators in your input. 
           required: false
           schema:
             type: integer
