@@ -12,8 +12,9 @@ paths:
     get:
       tags:
         - Bored? This API finds activities to keep you engaged. 
-      summary: Use this API endpoint to find activities to do. 
-      description:  You can specify any combinations of the parameters below including type of activity, number of participants, price index from 0-1 where 0 is free and 1 very expensive, accessibility index from 0-1 where 0 being very easy to do and 1 being super difficult.The key parameter accepts an integer to represent the unique ID of an activity.  <br/><br/> If you do not specify any parameters, a random activity will be returned.
+      summary: Use this API endpoint to find activities to do. You may specify any combinations of parameters to narrow the returns or leave the parameters empty. 
+      description:  You may specify any combinations of <br/> <br/> 1.Type of the activity ("education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork")  <br/> 2. Number of activity participants  <br/> 3. Price index from [0-1] where 0 is free and 1 is super expensive <br/> 4. Minimum price index from [0-1]
+       <br/> 5. Maximum price index from [0-1]  <br/> 6. Accessibility index from [0-1] where 0 is effortless and 1 is super difficult <br/>  7. Minimum accessibility index from [0-1]  <br/> 8. Maximum accessibility index from [0-1] <br/> 9. Integer from [1000000,9000000] to represent the unique ID of an activity  <br/><br/> If you do not specify any parameters, a random activity is returned. <br/> <br/>The return format is Json.
       
       operationId: getActivity
       parameters:
@@ -36,52 +37,52 @@ paths:
        
         - name: participants
           in: query
-          description: Optional. Accepts an integer to represent the number of participants needed. Usually it is an integer from 1 to 8.
+          description: Optional. Accepts an integer to represent the number of participants needed for this activity. <br/>**TIP** Usually it is an integer from 1 to 8.
           schema:
             type: integer
         - name: price
           in: query
-          description: Optional. accepts a number from 0 to 1. The return will match the exact price specified. 
+          description: Optional. Accepts a number from 0.0 to 1.0 to represent the price index. 0 means free and 1 means very expensive.  <br/> **TIP** So far the Bored API database does not have activities with price index higher than 0.8. 
           required: false
           schema:
             type: number
         - name: minprice
           in: query
-          description: Optional. The mimimum price to start with. 
+          description: Optional. Accepts a number from 0.0 to 1.0 to represent the lower bound price index you want for your activity. 
           required: false
           schema:
             type: number
         - name: maxprice
           in: query
-          description: Optional. The maxinum price. 
+          description: Optional. Accepts a number from 0.0 to 1.0 to represent the upper bound price index you want for your activity. 
           required: false
           schema:
             type: number
             
         - name: accessibility
           in: query
-          description: Optional. A factor from [0,1] describing how possible an event is to do with zero being the most accessible. 
+          description: Optional. Accepts a number from 0.0 to 1.0 to represent the difficulty level of the activity. 0 means very easy and 1 means very difficult. 
           required: false
           schema:
             type: number
         
         - name: minaccessibility. 
           in: query
-          description:  miminum accessibility from [0,1]
+          description: Optional. Accepts a number from 0.0 to 1.0 to represent the lower bound accessibility level. 
           required: false
           schema:
             type: number
             
         - name: maxaccessibility. 
           in: query
-          description: Optional. A factor describing how possible an event is to do with zero being the most accessible
+          description: Optional. Accepts a number from 0.0 to 1.0 to represent the upper bound accessibility level. 
           required: false
           schema:
             type: number
             
         - name: key
           in: query
-          description: Optional. Accepts an integer from 1000000 to 9999999 to represent the unique ID of an activity. Do not include thousand seperator in your integer. 
+          description: Optional. Accepts an integer from 1000000 to 9999999 to represent the unique ID of an activity. <br/>**TIP**  Do not include thousand seperator in your input integer. 
           required: false
           schema:
             type: integer
@@ -127,6 +128,6 @@ paths:
             content:
              text/plain:
               schema:
-                title: request not found
+                title: No activity found
                 type: string
-                example: Request not found   
+                example: No activity found 
