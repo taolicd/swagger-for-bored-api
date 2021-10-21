@@ -2,9 +2,8 @@ openapi: 3.0.1
 info:
   title: Swagger UI for the Bored API
   description: >-
-    This is a Swagger page for the Bored API. Find out more about the
-    project at [https://www.boredapi.com](https://www.boredapi.com).  No
-    authentication is required for using this API.
+    Find out more about the
+    project at [https://www.boredapi.com](https://www.boredapi.com).  <br/><br/> **NOTE** The Bored API is public and requires no authentication to use. 
   version: 1.0.0
 servers:
   - url: https://www.boredapi.com
@@ -12,10 +11,11 @@ paths:
   /api/activity:
     get:
       tags:
-        - What to do when you are bored? Use this API to find activities to entertain you. 
-      summary: Use this API to find things to do when you are bored. 
-      description:  You can specify any combinations of the parameters below. If no parameters are specified, a random activity will be returned.You will get a Json response containing the activity description, type of activity, a unique key for the activity, the price indicator from 0-1, accessibility indicator from 0-1, the number of participants suggested.
-      operationId: getInventory
+        - Bored? This API finds activities to keep you engaged. 
+      summary: Use this API endpoint to find activities to do. 
+      description:  You can specify any combinations of the parameters below including type of activity, number of participants, price index from 0-1 where 0 is free and 1 very expensive, accessibility index from 0-1 where 0 being very easy to do and 1 being super difficult.The key parameter accepts an integer to represent the unique ID of an activity.  <br/><br/> If you do not specify any parameters, a random activity will be returned.
+      
+      operationId: getActivity
       parameters:
         - name: type
           in: query
@@ -36,7 +36,7 @@ paths:
        
         - name: participants
           in: query
-          description: Optional. The number of people that this activity involves from 1 to 10.
+          description: Optional. Accepts an integer to represent the number of participants needed. Usually it is an integer from 1 to 8.
           schema:
             type: integer
         - name: price
@@ -87,9 +87,46 @@ paths:
             type: integer
           
       responses:
-        '200':
-          description: successful operation
+        200:
+          description: Successful operation
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  activity:
+                    type: string
+                    description: internal parameter
+                    example: Learn how to beatbox
+                  type:
+                   type: string
+                   description: internal parameter
+                   example: recreational
+                  participants:
+                   type: integer
+                   description: internal parameter
+                   example: 1 
+                  price:
+                    type: number
+                    description: Internal parameter
+                    example: 0
+                  link:
+                    type: string
+                    description: Internal parameter
+                    example: https://en.wikipedia.org/wiki/Beatboxing
+                  key:
+                    type: integer
+                    description: Internal parameter
+                    example: 8731710
+                  accessibility:
+                    type: number
+                    description: Internal parameter
+                    example: 1
+        404:
+            description: Not found response
+            content:
+             text/plain:
+              schema:
+                title: request not found
+                type: string
+                example: Request not found   
