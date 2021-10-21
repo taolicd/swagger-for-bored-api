@@ -12,9 +12,9 @@ paths:
     get:
       tags:
         - Bored? This API finds activities to keep you engaged. 
-      summary: Use this API endpoint to find activities to do. You may specify any combinations of parameters to narrow the returns or leave the parameters empty. 
+      summary: Use this API endpoint to find activities to do. If you leave all the parameters empty, a random activity will be suggested for you. If you specify any combinations of the parameters, the activity returned will match your specifications.  
       description:  You may specify any combinations of <br/> <br/> 1.Type of the activity ("education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork")  <br/> 2. Number of activity participants  <br/> 3. Price index from [0-1] where 0 is free and 1 is super expensive <br/> 4. Minimum price index from [0-1]
-       <br/> 5. Maximum price index from [0-1]  <br/> 6. Accessibility index from [0-1] where 0 is effortless and 1 is super difficult <br/>  7. Minimum accessibility index from [0-1]  <br/> 8. Maximum accessibility index from [0-1] <br/> 9. Integer from [1000000,9000000] to represent the unique ID of an activity  <br/><br/> If you do not specify any parameters, a random activity is returned. <br/> <br/>The return format is Json.
+       <br/> 5. Maximum price index from [0-1]  <br/> 6. Accessibility index from [0-1] where 0 is effortless and 1 is super difficult <br/>  7. Minimum accessibility index from [0-1]  <br/> 8. Maximum accessibility index from [0-1] <br/> 9. Integer from [1000000,9000000] to represent the unique ID of an activity  <br/><br/> If you do not specify any parameters, a random activity will be returned. <br/> <br/>The return is in Json format.
       
       operationId: getActivity
       parameters:
@@ -131,3 +131,4 @@ paths:
                 title: No activity found
                 type: string
                 example: No activity found 
+ 
