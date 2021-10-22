@@ -4,7 +4,7 @@ info:
   description: >-
     Find out more about the
     project at [https://www.boredapi.com](https://www.boredapi.com).  <br/><br/> **NOTE** The Bored API requires no authentication to use. 
-    <br/> <br/> To interact with this Swagger UI, click the **GET** button to expand the panel to view the available parameters. Click **Try it out** to start plugging in parameters. Click **Execute** to run the query. <br/><br/> **TIP** After a query is submitted, The Responses section will display the equivalent **Curl** command and Request URL. 
+    <br/> <br/> To interact with this Swagger UI, click the **GET** button to display the available parameters. Click **Try it out** to start plugging in parameters. Click **Execute** to run the query. <br/><br/> **TIP** After a query is submitted, The Responses section will display the equivalent **Curl** command and Request URL. 
   version: 1.0.0
 servers:
   - url: https://www.boredapi.com
@@ -12,8 +12,8 @@ paths:
   /api/activity:
     get:
       tags:
-        - Bored? This API finds activities to keep you engaged and challenged. 
-      summary: Use this endpoint to find activities to do. If you leave all the parameters empty, a random activity will be suggested for you. If you specify any combinations of the parameters, the activity to be returned will match your specifications.  
+        - Bored? Use this API to find things you can do to get inspired. 
+      summary: Use this endpoint to find activities to do. If you leave all the parameters empty, a random activity will be suggested. If you specify any combinations of the parameters, the activity to be returned will match your specifications.  
       description:  You may specify any combinations of <br/> <br/> 1.Type of the activity ("education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork")  <br/> 2. Number of activity participants  <br/> 3. Price index from [0-1] where 0 is free and 1 is super expensive <br/> 4. Minimum price index from [0-1]
        <br/> 5. Maximum price index from [0-1]  <br/> 6. Accessibility index from [0-1] where 0 is effortless and 1 is super difficult <br/>  7. Minimum accessibility index from [0-1]  <br/> 8. Maximum accessibility index from [0-1] <br/> 9. Integer from [1000000,9000000] to represent the unique ID of an activity  <br/><br/> If you do not specify any parameters, a random activity will be returned. <br/> <br/>The response is in Json format.
       
@@ -111,31 +111,31 @@ paths:
                 properties:
                   activity:
                     type: string
-                    description: internal parameter
+                    description: parameter
                     example: Learn how to beatbox
                   type:
                    type: string
-                   description: internal parameter
+                   description: parameter
                    example: recreational
                   participants:
                    type: integer
-                   description: internal parameter
+                   description: parameter
                    example: 1 
                   price:
                     type: number
-                    description: Internal parameter
+                    description:parameter
                     example: 0
                   link:
                     type: string
-                    description: Internal parameter
+                    description: URL
                     example: https://en.wikipedia.org/wiki/Beatboxing
                   key:
                     type: integer
-                    description: Internal parameter
+                    description: parameter
                     example: 8731710
                   accessibility:
                     type: number
-                    description: Internal parameter
+                    description: parameter
                     example: 1
         404:
             description: Not found response
