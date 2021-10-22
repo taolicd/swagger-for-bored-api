@@ -12,7 +12,7 @@ paths:
   /api/activity:
     get:
       tags:
-        - Bored? Use this API to find things you can do to get inspired. 
+        - Bored? Use this API to find things you can do. 
       summary: Use this endpoint to find activities to do. If you leave all the parameters empty, a random activity will be suggested. If you specify any combinations of the parameters, the activity to be returned will match your specifications.  
       description:  You may specify any combinations of <br/> <br/> 1.Type of the activity ("education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork")  <br/> 2. Number of activity participants  <br/> 3. Price indicator from [0-1] where 0 is free and 1 is super expensive <br/> 4. Minimum price indicator from [0-1]
        <br/> 5. Maximum price indicator from [0-1]  <br/> 6. Accessibility indicator from [0-1] where 0 is effortless and 1 is super difficult <br/>  7. Minimum accessibility indicator from [0-1]  <br/> 8. Maximum accessibility indicator from [0-1] <br/> 9. Integer from [1000000,9000000] to represent the unique ID of an activity  <br/><br/> If you do not specify any parameters, a random activity will be returned. <br/> <br/>The response is in Json format.
@@ -78,7 +78,7 @@ paths:
             maximum: 1
         - name: minaccessibility
           in: query
-          description: Optional. Accepts a number from 0.0 to 1.0 to represent the lower bound accessibility level. This means the activity to be returned must have the difficulty level no smaller than this number. 
+          description: Optional. Accepts a number from 0.0 to 1.0 to represent the lower bound accessibility level. This means the activity to be returned must have a difficulty level no smaller than this number. 
           required: false
           schema:
             type: number
@@ -86,7 +86,7 @@ paths:
             maximum: 1
         - name: maxaccessibility
           in: query
-          description: Optional. Accepts a number from 0.0 to 1.0 to represent the upper bound accessibility level. This means the activity to be returned must have the difficulty level no bigger than this number.  
+          description: Optional. Accepts a number from 0.0 to 1.0 to represent the upper bound accessibility level. This means the activity to be returned must have a difficulty level no bigger than this number.  
           required: false
           schema:
             type: number
