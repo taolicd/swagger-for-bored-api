@@ -123,7 +123,7 @@ paths:
                    example: 1 
                   price:
                     type: number
-                    description:parameter
+                    description: parameter
                     example: 0
                   link:
                     type: string
