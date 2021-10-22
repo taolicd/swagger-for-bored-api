@@ -14,8 +14,8 @@ paths:
       tags:
         - Bored? Use this API to find things you can do to get inspired. 
       summary: Use this endpoint to find activities to do. If you leave all the parameters empty, a random activity will be suggested. If you specify any combinations of the parameters, the activity to be returned will match your specifications.  
-      description:  You may specify any combinations of <br/> <br/> 1.Type of the activity ("education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork")  <br/> 2. Number of activity participants  <br/> 3. Price index from [0-1] where 0 is free and 1 is super expensive <br/> 4. Minimum price index from [0-1]
-       <br/> 5. Maximum price index from [0-1]  <br/> 6. Accessibility index from [0-1] where 0 is effortless and 1 is super difficult <br/>  7. Minimum accessibility index from [0-1]  <br/> 8. Maximum accessibility index from [0-1] <br/> 9. Integer from [1000000,9000000] to represent the unique ID of an activity  <br/><br/> If you do not specify any parameters, a random activity will be returned. <br/> <br/>The response is in Json format.
+      description:  You may specify any combinations of <br/> <br/> 1.Type of the activity ("education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork")  <br/> 2. Number of activity participants  <br/> 3. Price indicator from [0-1] where 0 is free and 1 is super expensive <br/> 4. Minimum price indicator from [0-1]
+       <br/> 5. Maximum price indicator from [0-1]  <br/> 6. Accessibility indicator from [0-1] where 0 is effortless and 1 is super difficult <br/>  7. Minimum accessibility indicator from [0-1]  <br/> 8. Maximum accessibility indicator from [0-1] <br/> 9. Integer from [1000000,9000000] to represent the unique ID of an activity  <br/><br/> If you do not specify any parameters, a random activity will be returned. <br/> <br/>The response is in Json format.
       
       operationId: getActivity
       parameters:
@@ -38,30 +38,30 @@ paths:
        
         - name: participants
           in: query
-          description: Optional. Accepts an integer to represent the number of participants needed for this activity. <br/> <br/> **TIP** Put an integer from 1 to 8.The current database does not have activities for participants over 8 people. The Swagger UI is configured to accept integer from 1 to 8 (both inclusive). 
+          description: Optional. Accepts an integer to represent the number of participants needed for this activity. Currently the Swagger UI is configured to accept integer from 1 to 10 (both inclusive). <br/> <br/> **TIP** Put an integer from 1 to 8.The current database does not have activities for participants over 8 people.  
           schema:
             type: integer
             minimum: 1
-            maximum: 8
+            maximum: 10
         - name: price
           in: query
-          description: Optional. Accepts a number from 0.0 to 1.0 to represent the price index. 0 means free and 1 means very expensive. When specified, an exact match of the price is required. <br/> <br/> **TIP** So far the Bored API database does not have activities with price index higher than 0.8. The Swagger UI is configured to accept numbers from 0 to 0.8 (both inclusive). 
+          description: Optional. Accepts a number from 0.0 to 1.0 to represent the price indicator. 0 means free and 1 means very expensive. When specified, an exact match of the price is required. <br/> <br/> **TIP** So far the Bored API database does not have activities with price indicator higher than 0.8. 
           required: false
           schema:
             type: number
             minimum: 0
-            maximum: 0.8
+            maximum: 1
         - name: minprice
           in: query
-          description: Optional. Accepts a number from 0.0 to 1.0 to represent the lower bound price index you want for your activity. This means the activity must have a price index no smaller than this number.  <br/> <br/> **TIP** So far the Bored API database does not have activities with price index higher than 0.8. The Swagger UI is configured to accept numbers from 0 to 0.8 (both inclusive). 
+          description: Optional. Accepts a number from 0.0 to 1.0 to represent the lower bound price indicator you want for your activity. This means the activity must have a price indicator no smaller than this number.  <br/> <br/> **TIP** So far the Bored API database does not have activities with price indicator higher than 0.8. 
           required: false
           schema:
             type: number
             minimum: 0
-            maximum: 0.8
+            maximum: 1
         - name: maxprice
           in: query
-          description: Optional. Accepts a number from 0.0 to 1.0 to represent the upper bound price index you want for your activity. This means the activity must have a price index no bigger than this number.  <br/> <br/> **TIP** So far the Bored API database does not have activities with price index higher than 0.8. The Swagger UI is configured to accept numbers from 0 to 0.8 (both inclusive). 
+          description: Optional. Accepts a number from 0.0 to 1.0 to represent the upper bound price indicator you want for your activity. This means the activity must have a price indicator no bigger than this number.  <br/> <br/> **TIP** So far the Bored API database does not have activities with price indicator higher than 0.8. 
           required: false
           schema:
             type: number
